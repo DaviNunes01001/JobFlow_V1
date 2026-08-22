@@ -1,4 +1,4 @@
-# JobHub — Gerenciador de Vagas e Candidaturas
+# JobFlow_V1 — Gerenciador de Vagas e Candidaturas
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript\&logoColor=black)
