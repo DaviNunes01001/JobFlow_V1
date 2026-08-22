@@ -5,7 +5,6 @@
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js\&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?logo=express\&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?logo=react\&logoColor=61DAFB)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql\&logoColor=white)
 
 ---
 
