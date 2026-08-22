@@ -10,7 +10,7 @@
 
 ## Sobre
 
-O **JobHub** é uma plataforma web para gerenciamento de vagas de emprego e acompanhamento de candidaturas.
+O **JobFlow** é uma plataforma web para gerenciamento de vagas de emprego e acompanhamento de candidaturas.
 
 O sistema permite que o usuário cadastre vagas, registre suas candidaturas e acompanhe informações como empresa, cargo, nível, modelo de trabalho, salário, recrutador e status do processo seletivo.
 
@@ -38,7 +38,7 @@ O sistema busca facilitar o controle de:
 ## Estrutura
 
 ```text
-JobHub
+JobFlow
 │
 ├── frontend                 # Interface da aplicação
 │   ├── src
@@ -220,11 +220,6 @@ Exemplo:
 ```text
 POST   /api/auth/register
 POST   /api/auth/login
-
-GET    /api/jobs
-POST   /api/jobs
-PUT    /api/jobs/:id
-DELETE /api/jobs/:id
 
 GET    /api/applications
 POST   /api/applications
