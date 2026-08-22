@@ -1,16 +1,93 @@
-# React + Vite
+# Job Management System — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend da aplicação de gerenciamento de candidaturas e vagas de emprego.
 
-Currently, two official plugins are available:
+O projeto está sendo desenvolvido com React e será responsável pela interface de autenticação, gerenciamento de candidaturas e visualização das informações do usuário.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+- React
+- Vite
+- JavaScript
+- Tailwind CSS
+- React Icons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estrutura atual
 
-## Expanding the Oxlint configuration
+No momento, o projeto contém apenas o template inicial criado com React + Vite.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+A estrutura será organizada conforme o desenvolvimento das funcionalidades:
+
+src/
+├── assets/
+├── components/
+├── pages/
+├── layouts/
+├── services/
+├── hooks/
+├── contexts/
+├── routes/
+├── utils/
+├── App.jsx
+└── main.jsx
+
+## Funcionalidades planejadas
+
+### Autenticação
+
+- Cadastro de usuário
+- Login
+- Logout
+- Persistência da autenticação
+- Proteção de rotas
+- Integração com JWT
+
+### Usuário
+
+- Visualização do perfil
+- Edição dos dados do usuário
+- Exclusão da conta
+
+### Candidaturas
+
+- Cadastro de candidatura
+- Listagem de candidaturas
+- Visualização dos detalhes
+- Edição de candidatura
+- Exclusão de candidatura
+- Alteração do status da candidatura
+- Filtros e organização das candidaturas
+
+### Dashboard
+
+- Resumo das candidaturas
+- Quantidade por status
+- Candidaturas recentes
+- Informações gerais do usuário
+
+## Estilização
+
+A interface será desenvolvida utilizando **Tailwind CSS**.
+
+O Tailwind será utilizado para:
+
+- Layout
+- Responsividade
+- Espaçamentos
+- Tipografia
+- Cores
+- Estados dos componentes
+- Responsividade para diferentes dispositivos
+
+## Ícones
+
+Os ícones da aplicação serão implementados utilizando **React Icons**.
+
+Exemplo:
+
+```jsx
+import { FaUser } from "react-icons/fa";
+
+function Example() {
+    return <FaUser />;
+}
