@@ -12,6 +12,8 @@
 
 ## Sobre
 
+Documentação completa: [`DOCUMENTACAO.md`](./DOCUMENTACAO.md).
+
 O **JobFlow** é uma plataforma web para gerenciamento de vagas de emprego e acompanhamento de candidaturas.
 
 A ideia é pessoal e o projeto existe como **estudo prático** de desenvolvimento Full Stack: organizar, em um só lugar, as vagas encontradas, os dados da empresa, o cargo, o andamento do processo e o contato com o recrutador.
