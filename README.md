@@ -13,7 +13,7 @@
 ## Sobre
 
 Documentação completa em MD: [`DOCUMENTACAO.md`](./DOCUMENTACAO.md).
-Documentação completa em MD: [`DOCUMENTAÇÃO jOBFLOW_V1`](https://docs.google.com/document/d/1fdwRsgpKD-FJLpxf9oLb2CsidAn5bwg3zb60Gg5LsEw/edit?usp=sharing).
+Documentação completa em Docs: [`DOCUMENTAÇÃO jOBFLOW_V1`](https://docs.google.com/document/d/1fdwRsgpKD-FJLpxf9oLb2CsidAn5bwg3zb60Gg5LsEw/edit?usp=sharing).
 
 O **JobFlow** é uma plataforma web para gerenciamento de vagas de emprego e acompanhamento de candidaturas.
 
