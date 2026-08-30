@@ -1,0 +1,3 @@
+Criar sua 
+branch para a cada fit ou fix nova, 
+decrições completas do que foi feito ou ajeitado ou mudado
