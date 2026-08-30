@@ -152,6 +152,21 @@ const application = {
     );
     return result.rows[0];
   },
+
+  async GetAllplicationsALL() {
+    const result = await pool.query(`SELECT * FROM ViewGetAll`);
+    return result.rows[0];
+  },
+
+  async GetCompany() {
+    const result = await pool.query(`SELECT company FROM Applications`);
+    return result.rows[0];
+  },
+
+  async GetFiltrosOne() {
+    const result = await pool.query(`
+      SELECT * from ViewFiltroOne`)
+  }
 };
 
 module.exports = application;

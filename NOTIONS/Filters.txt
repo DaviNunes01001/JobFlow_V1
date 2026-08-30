@@ -1,0 +1,50 @@
+### Filtros
+
+1. **Status**
+
+   * Salvo
+   * Candidatura
+   * Entrevista
+   * Teste técnico
+   * Aprovado
+   * Rejeitado
+
+2. **Nível**
+
+   * Estágio
+   * Júnior
+   * Pleno
+   * Sênior
+
+3. **Modelo de trabalho**
+
+   * Remoto
+   * Híbrido
+   * Presencial
+
+4. **Empresa**
+
+5. **Cargo**
+
+6. **Setor**
+
+7. **Cidade**
+
+8. **Plataforma**
+
+9. **Salário**
+
+   * Mínimo
+   * Máximo
+
+10. **Data da candidatura**
+
+* Data inicial
+* Data final
+
+### Ordenação
+
+* Mais recente
+* Mais antiga
+* Maior salário
+* Menor salário
