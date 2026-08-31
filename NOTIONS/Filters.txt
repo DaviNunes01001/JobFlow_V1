@@ -24,20 +24,19 @@
 
 4. **Empresa**
 
-5. **Cargo**
 
-6. **Setor**
+5. **Setor**
 
-7. **Cidade**
+6. **Cidade**
 
-8. **Plataforma**
+7. **Plataforma**
 
-9. **Salário**
+8. **Salário**
 
    * Mínimo
    * Máximo
 
-10. **Data da candidatura**
+9. **Data da candidatura**
 
 * Data inicial
 * Data final
