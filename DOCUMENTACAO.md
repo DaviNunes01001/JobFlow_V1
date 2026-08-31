@@ -1,8 +1,3 @@
-Sim. Vou usar a **documentação atualizada como base**, mas também aplicar o que definimos depois dela nesta conversa: **não usar `applicationsServices.js`**, manter `AuthService` para autenticação e `generateToken.js` em `utils`.
-
-Abaixo está o `README.md` atualizado:
-
-````markdown
 # JobFlow_V1 — Gerenciador de Vagas e Candidaturas
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
@@ -970,7 +965,4 @@ As alterações devem possuir descrições claras sobre o que foi implementado o
 
 > Projeto pessoal em desenvolvimento, criado como estudo prático de Full Stack, com foco em API REST, PostgreSQL, autenticação JWT, segurança de senhas, filtros dinâmicos e organização de backend.
 
-```
-
-A principal correção em relação ao README anterior é que agora ele **não afirma que `ApplicationService` existe**. A arquitetura fica coerente com o que estamos fazendo: **Applications usam Controller → Model**, enquanto **Authentication usa Controller → AuthService → Model**, com `generateToken.js` separado como utilitário.
 ```
