@@ -7,6 +7,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql\&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?logo=react\&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite\&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-autenticação%20planejada-purple)
+![bcrypt](https://img.shields.io/badge/bcrypt-segurança%20de%20senhas-orange)
 
 ---
 
@@ -17,11 +19,13 @@ Documentação completa em Docs: [`DOCUMENTAÇÃO jOBFLOW_V1`](https://docs.goog
 
 O **JobFlow** é uma plataforma web para gerenciamento de vagas de emprego e acompanhamento de candidaturas.
 
-A ideia é pessoal e o projeto existe como **estudo prático** de desenvolvimento Full Stack: organizar, em um só lugar, as vagas encontradas, os dados da empresa, o cargo, o andamento do processo e o contato com o recrutador.
+A ideia é pessoal e o projeto existe como **estudo prático de desenvolvimento Full Stack**: organizar, em um só lugar, as vagas encontradas, os dados da empresa, o cargo, o andamento do processo seletivo e os contatos relacionados à candidatura.
 
-O sistema permitirá que o usuário cadastre candidaturas e acompanhe informações como empresa, cargo, nível, modelo de trabalho, salário, recrutador e status do processo seletivo. O projeto **ainda está em andamento** e não está completo.
+O sistema permite estruturar informações como empresa, cargo, nível, modelo de trabalho, salário, recrutador, status e data da candidatura.
 
-A aplicação é **Full Stack**, com frontend em React (Vite), backend em Node.js/Express e banco de dados relacional PostgreSQL.
+O projeto **ainda está em desenvolvimento**. A estrutura do backend e as operações relacionadas às candidaturas já estão sendo implementadas, enquanto a autenticação JWT e a integração completa com o frontend ainda estão em desenvolvimento.
+
+A aplicação é Full Stack, utilizando React (Vite) no frontend, Node.js/Express no backend e PostgreSQL como banco de dados relacional.
 
 ---
 
@@ -32,41 +36,71 @@ Centralizar o processo de organização e acompanhamento de candidaturas em uma 
 O sistema busca facilitar o controle de:
 
 * Vagas encontradas;
-* Empresas (como dado da candidatura);
+* Empresas;
 * Candidaturas realizadas;
 * Status dos processos seletivos;
 * Informações de contato;
 * Modelo de trabalho;
 * Faixa salarial;
 * Datas das candidaturas;
-* Filtros padronizados e busca simples (planejados).
+* Filtros acumulativos;
+* Busca e organização das candidaturas.
 
 ---
 
-## Estrutura
+# Estrutura
 
 ```text
 JobFlow_V1
 │
-├── Frontend                 # Interface (React + Vite) — template inicial
+├── Frontend
 │   ├── src
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   └── package.json
 │
-├── Backend                  # API REST (Express) — em construção
+├── Backend
 │   ├── src
-│   │   ├── config           # Conexão com PostgreSQL
-│   │   ├── models           # Consultas das entidades (Users, Applications)
-│   │   └── app.js           # Inicialização do servidor
+│   │   ├── config
+│   │   │   └── database.js
+│   │   │
+│   │   ├── controllers
+│   │   │   ├── applicationController.js
+│   │   │   ├── authController.js
+│   │   │   └── userController.js
+│   │   │
+│   │   ├── middleware
+│   │   │   ├── authMiddleware.js
+│   │   │   └── errorMiddleware.js
+│   │   │
+│   │   ├── models
+│   │   │   ├── ApplicationModels.js
+│   │   │   └── UserModels.js
+│   │   │
+│   │   ├── routes
+│   │   │   ├── applicationRoutes.js
+│   │   │   ├── authRoutes.js
+│   │   │   └── userRoutes.js
+│   │   │
+│   │   ├── services
+│   │   │   └── authServices.js
+│   │   │
+│   │   ├── utils
+│   │   │   ├── generateToken.js
+│   │   │   └── validators.js
+│   │   │
+│   │   └── app.js
+│   │
 │   ├── .env.example
 │   └── package.json
 │
 ├── Database
 │   ├── TABLE
-│   │   └── TABLES_DATA_BASE.sql   # Criação das tabelas
+│   │   └── TABLES_DATA_BASE.sql
+│   │
 │   ├── VIEW
 │   │   └── SQL-SELECTS-VIEWS-FILTROS.sql
+│   │
 │   └── INSERTS
 │       └── SQLS-INSERTS-Base-Teste.sql
 │
@@ -74,31 +108,31 @@ JobFlow_V1
 └── README.md
 ```
 
-Pastas previstas no backend e no frontend (ainda não criadas): `routes`, `controllers`, `services`, `middlewares`, `components`, `pages`, `hooks`.
+---
+
+# Tecnologias
+
+| Tecnologia | Utilização                          |
+| ---------- | ----------------------------------- |
+| React      | Interface do usuário                |
+| Vite       | Build e servidor de desenvolvimento |
+| JavaScript | Linguagem principal                 |
+| Node.js    | Ambiente de execução do backend     |
+| Express    | Criação da API REST                 |
+| PostgreSQL | Banco de dados relacional           |
+| pg         | Conexão com PostgreSQL              |
+| bcrypt     | Hash de senhas                      |
+| JWT        | Autenticação e autorização          |
+| Git        | Controle de versão                  |
+| GitHub     | Hospedagem do projeto               |
 
 ---
 
-## Tecnologias
+# Backend
 
-| Tecnologia | Utilização                      |
-| ---------- | ------------------------------- |
-| React      | Interface do usuário            |
-| Vite       | Build e servidor de desenvolvimento do frontend |
-| JavaScript | Linguagem principal             |
-| Node.js    | Ambiente de execução do backend |
-| Express    | Criação da API REST             |
-| PostgreSQL | Banco de dados relacional       |
-| pg         | Driver de conexão com o PostgreSQL |
-| bcrypt     | Hash de senhas (previsto)       |
-| JWT        | Autenticação e autorização (previsto) |
-| Git        | Controle de versão              |
-| GitHub     | Hospedagem do repositório       |
+O backend está sendo organizado em camadas, separando responsabilidades entre rotas, middlewares, controllers, models e serviços específicos de autenticação.
 
----
-
-## Backend
-
-A API seguirá uma arquitetura organizada em camadas. Hoje existem o servidor Express, a conexão com o banco e os models; rotas, middlewares, controllers e services ainda serão implementados.
+A arquitetura atual segue:
 
 ```text
 Routes
@@ -107,61 +141,315 @@ Middlewares
    ↓
 Controllers
    ↓
-Services
-   ↓
 Models
    ↓
 Database
 ```
 
-### Principais módulos
+Para autenticação, existe uma camada adicional de serviço:
 
-* **Autenticação** — cadastro, login e sessão com JWT (dependências já no projeto; fluxo ainda não ligado).
-* **Usuários** — model com operações de criar, buscar, atualizar e excluir; rotas ainda não expostas.
-* **Candidaturas** — model com CRUD e consultas ligadas às views do banco; rotas ainda não expostas.
-* **Filtros** — views SQL já definidas; endpoints padronizados ainda serão criados.
-* **Busca** — busca simples sobre as candidaturas (planejada).
+```text
+AuthController
+   ↓
+AuthService
+   ↓
+UserModels
+   ↓
+Database
+```
+
+## Responsabilidade das camadas
+
+### Routes
+
+Responsáveis por definir os endpoints da API e direcionar cada requisição para o controller correspondente.
+
+### Middlewares
+
+Responsáveis por processos executados antes dos controllers.
+
+Entre eles está o middleware de autenticação, que será responsável por validar o JWT antes do acesso às rotas protegidas.
+
+### Controllers
+
+Responsáveis por receber:
+
+* `req`
+* `res`
+* `next`
+
+Os controllers recebem a requisição, chamam a operação necessária e retornam a resposta HTTP.
+
+### Models
+
+Responsáveis pelas operações diretamente relacionadas ao banco de dados.
+
+Atualmente existem models para:
+
+* Usuários;
+* Candidaturas.
+
+### Services
+
+A camada `services` está sendo utilizada para a lógica de autenticação.
+
+O `authServices.js` será responsável por concentrar regras como:
+
+* cadastro;
+* login;
+* validação de credenciais;
+* utilização do bcrypt;
+* geração do JWT.
+
+Não foi criada uma camada de `applicationsServices`, mantendo as operações de candidaturas diretamente entre Controller e Model.
+
+### Utils
+
+Contém funções auxiliares reutilizáveis.
+
+O `generateToken.js` será responsável pela geração do JWT.
 
 ---
 
-## Banco de Dados
+# Banco de Dados
 
-O banco é **PostgreSQL**. O modelo relacional concentra duas entidades principais:
+O banco de dados utiliza **PostgreSQL**.
+
+O modelo possui duas entidades principais:
 
 ```text
 Users
-   └── Applications   (ID_USER_FK)
+   │
+   │ ID_USER_FK
+   ▼
+Applications
 ```
 
-Não há tabela separada de empresa ou de vaga: empresa, cargo, setor, cidade, plataforma, salário e demais dados ficam na própria candidatura (`Applications`).
+Não existe uma tabela separada para empresas ou vagas.
 
-Campos de domínio (com `CHECK` no SQL):
+Os dados relacionados à oportunidade ficam registrados diretamente em `Applications`.
 
-* **Nível:** `INTERN`, `JUNIOR`, `MID`, `SENIOR`
-* **Modelo de trabalho:** `REMOTE`, `HYBRID`, `ONSITE`
-* **Status:** `SAVED`, `APPLIED`, `INTERVIEW`, `TECHNICAL_TEST`, `APPROVED`, `REJECTED`
+Entre os dados armazenados estão:
 
-Há views para listagem e para filtros:
+* Empresa;
+* Setor;
+* LinkedIn da empresa;
+* Cidade;
+* Plataforma;
+* Cargo;
+* Nível;
+* Modelo de trabalho;
+* Data da candidatura;
+* Status;
+* Recrutador;
+* Contato;
+* Salário;
+* URL da vaga;
+* Observações.
 
-* `ViewGetAll` — candidaturas ordenadas pela data (mais recentes primeiro)
-* `ViewFiltroOne` — recorte de colunas usado em filtros e pesquisa
+## Campos de domínio
 
-Scripts:
+### Nível
 
-* [`Database/TABLE/TABLES_DATA_BASE.sql`](./Database/TABLE/TABLES_DATA_BASE.sql)
-* [`Database/VIEW/SQL-SELECTS-VIEWS-FILTROS.sql`](./Database/VIEW/SQL-SELECTS-VIEWS-FILTROS.sql)
-* [`Database/INSERTS/SQLS-INSERTS-Base-Teste.sql`](./Database/INSERTS/SQLS-INSERTS-Base-Teste.sql)
+```text
+INTERN
+JUNIOR
+MID
+SENIOR
+```
+
+### Modelo de trabalho
+
+```text
+REMOTE
+HYBRID
+ONSITE
+```
+
+### Status
+
+```text
+SAVED
+APPLIED
+INTERVIEW
+TECHNICAL_TEST
+APPROVED
+REJECTED
+```
 
 ---
 
-## Autenticação
+# Models de Applications
 
-O sistema utilizará **JWT (JSON Web Token)** para autenticação. A chave `JWT_SECRET` já está prevista no `.env.example`; o fluxo completo (login, emissão de token e rotas protegidas) ainda não está implementado.
+O `ApplicationModels.js` já possui operações para manipulação das candidaturas.
 
-Fluxo básico previsto:
+## Criar candidatura
+
+```text
+create(application)
+```
+
+Insere uma nova candidatura no banco e retorna o registro criado.
+
+## Buscar por ID
+
+```text
+FindById(id)
+```
+
+Busca uma candidatura específica através de `ID_APP`.
+
+## Atualizar candidatura
+
+```text
+update(id, application)
+```
+
+Atualiza os dados da candidatura e atualiza `UPDATED_AT`.
+
+## Excluir candidatura
+
+```text
+DeleteApplications(id)
+```
+
+Remove uma candidatura através de seu ID.
+
+## Buscar todas
+
+```text
+GetAllplicationsALL()
+```
+
+Realiza a consulta utilizando a `ViewGetAll`.
+
+## Filtro dinâmico
+
+```text
+QueryDinamicaFindFilters(filters)
+```
+
+Essa função foi criada para permitir **filtros acumulativos**.
+
+Os filtros podem ser adicionados conforme os parâmetros recebidos.
+
+Atualmente são considerados:
+
+```text
+Status
+Nível
+Modelo de trabalho
+Empresa
+Setor
+Cidade
+Plataforma
+Salário mínimo
+Salário máximo
+```
+
+A consulta é construída dinamicamente utilizando parâmetros do PostgreSQL:
+
+```sql
+WHERE 1 = 1
+AND STATUS = $1
+AND LEVEL = $2
+AND WORK_MODEL = $3
+```
+
+Os filtros não escolhidos não são adicionados à consulta.
+
+Também é utilizada ordenação por data:
+
+```sql
+ORDER BY APPLICATION_DATE DESC
+```
+
+Assim, o sistema pode receber diferentes combinações de filtros sem precisar criar uma query separada para cada combinação.
+
+---
+
+# Filtros
+
+O sistema está sendo estruturado para permitir uma interface de filtros acumulativos.
+
+Exemplo:
+
+```text
+Status: APPLIED
+Nível: JUNIOR
+Modelo: REMOTE
+Cidade: São Paulo
+Salário mínimo: 4000
+Salário máximo: 7000
+```
+
+A consulta poderá ser construída com todas essas condições:
+
+```sql
+SELECT *
+FROM Applications
+WHERE 1 = 1
+  AND STATUS = $1
+  AND LEVEL = $2
+  AND WORK_MODEL = $3
+  AND CITY = $4
+  AND SALARY >= $5
+  AND SALARY <= $6
+ORDER BY APPLICATION_DATE DESC;
+```
+
+O `SELECT *` permite retornar todas as informações das candidaturas que atenderem aos filtros.
+
+O `WHERE` determina **quais registros serão retornados**, enquanto o `SELECT` determina **quais colunas serão retornadas**.
+
+---
+
+# Autenticação
+
+A autenticação está sendo estruturada utilizando **JWT (JSON Web Token)**.
+
+A arquitetura prevista possui:
 
 ```text
 Usuário
+   ↓
+AuthRoutes
+   ↓
+AuthController
+   ↓
+AuthService
+   ↓
+UserModels
+   ↓
+PostgreSQL
+```
+
+Após a validação das credenciais:
+
+```text
+AuthService
+   ↓
+bcrypt
+   ↓
+generateToken.js
+   ↓
+JWT
+   ↓
+Frontend
+```
+
+A chave secreta será armazenada no `.env` através de:
+
+```env
+JWT_SECRET=...
+```
+
+O JWT será posteriormente utilizado pelo `authMiddleware.js` para proteger rotas da API.
+
+Fluxo previsto:
+
+```text
+Frontend
    ↓
 Login
    ↓
@@ -169,106 +457,230 @@ API
    ↓
 Validação das credenciais
    ↓
-JWT
+Geração do JWT
    ↓
-Frontend
+Frontend armazena o token
    ↓
-Requisições autenticadas
+Requisição autenticada
+   ↓
+authMiddleware
+   ↓
+Controller
 ```
 
-Rotas protegidas exigirão um token válido para serem acessadas.
+A autenticação ainda está **em implementação**.
 
 ---
 
-## Principais funcionalidades
+# Autorização por usuário
 
-O que já existe no repositório (ainda sem API completa nem interface):
+Um dos objetivos da autenticação é utilizar o ID do usuário obtido através do JWT para controlar o acesso às candidaturas.
 
-* [x] Esquema do banco (Users e Applications)
-* [x] Views de listagem e de filtro
-* [x] Conexão Node.js ↔ PostgreSQL
-* [x] Models iniciais de usuário e candidatura
-* [x] Servidor Express de teste
+Após validar o token, o middleware poderá disponibilizar o usuário através de:
 
-Previsto:
+```javascript
+req.user
+```
 
-* [ ] Cadastro de usuário
-* [ ] Login
-* [ ] Autenticação com JWT
-* [ ] Cadastro de candidaturas
-* [ ] Edição de candidaturas
-* [ ] Exclusão de candidaturas
-* [ ] Atualização do status da candidatura
-* [ ] Visualização das candidaturas
-* [ ] Filtros com rotas padronizadas
-* [ ] Busca simples
-* [ ] Dashboard de candidaturas
-* [ ] Controle de perfil do usuário
+Por exemplo:
+
+```javascript
+req.user.idUser
+```
+
+Esse ID poderá ser utilizado nas consultas de `Applications` para garantir que o usuário tenha acesso somente às suas próprias candidaturas.
+
+Exemplo:
+
+```sql
+SELECT *
+FROM Applications
+WHERE ID_USER_FK = $1;
+```
+
+Essa etapa faz parte da implementação da autenticação e autorização do sistema.
 
 ---
 
-## Status das candidaturas
+# Status das candidaturas
 
-Estados previstos no banco (e nos filtros):
+O fluxo principal planejado é:
 
 ```text
-Salvo (SAVED)
+Salvo
+(SAVED)
    ↓
-Candidatura (APPLIED)
+Candidatura enviada
+(APPLIED)
    ↓
-Entrevista (INTERVIEW)
+Entrevista
+(INTERVIEW)
    ↓
-Teste técnico (TECHNICAL_TEST)
+Teste técnico
+(TECHNICAL_TEST)
    ↓
-Aprovado (APPROVED)
+Aprovado
+(APPROVED)
 ```
 
-Também é possível representar:
+Também existe o estado:
 
 ```text
-Rejeitado (REJECTED)
+Rejeitado
+(REJECTED)
+```
+
+Os filtros poderão utilizar esses estados para mostrar somente candidaturas de determinado estágio.
+
+Exemplo:
+
+```sql
+SELECT *
+FROM Applications
+WHERE STATUS = 'APPLIED';
 ```
 
 ---
 
-## API
+# API
 
-O servidor sobe com uma rota de saúde em `GET /`. Os grupos abaixo são o **padrão previsto** (ainda não implementados). Os filtros terão rotas próprias, no mesmo estilo de nomenclatura.
+A API está sendo organizada nos seguintes grupos:
 
 ```text
 /api/auth
 /api/users
 /api/applications
-/api/applications/filters
-/api/applications/search
 ```
 
-Exemplo:
+Endpoints planejados:
 
 ```text
 POST   /api/auth/register
 POST   /api/auth/login
 
+GET    /api/users
+GET    /api/users/:id
+PUT    /api/users/:id
+DELETE /api/users/:id
+
 GET    /api/applications
+GET    /api/applications/:id
 POST   /api/applications
 PUT    /api/applications/:id
 DELETE /api/applications/:id
 
-GET    /api/applications/filters?status=&level=&work_model=&company=
-GET    /api/applications/search?q=
+GET    /api/applications/filters
 ```
 
-Filtros previstos (query params nas rotas padronizadas): status, nível, modelo de trabalho, empresa, cargo, setor, cidade, plataforma, faixa salarial e intervalo de datas. Ordenação prevista: mais recente, mais antiga, maior salário, menor salário.
+Exemplo de utilização dos filtros:
+
+```text
+GET /api/applications/filters?status=APPLIED&level=JUNIOR
+```
+
+Outros parâmetros previstos:
+
+```text
+status
+level
+workModel
+company
+sector
+city
+platform
+minSalary
+maxSalary
+```
 
 ---
 
-## Execução
+# Principais funcionalidades
 
-Copie `Backend/.env.example` para `Backend/.env` e preencha usuário, senha, host, porta e nome do banco PostgreSQL, além de `JWT_SECRET` e `PORT`.
+## Implementado
 
-Crie as tabelas e, se quiser dados de teste, rode os scripts em `Database/`.
+* [x] Estrutura inicial do banco PostgreSQL
+* [x] Tabela `Users`
+* [x] Tabela `Applications`
+* [x] Relacionamento entre usuários e candidaturas
+* [x] Views SQL
+* [x] Conexão Node.js ↔ PostgreSQL
+* [x] Model de usuários
+* [x] Model de candidaturas
+* [x] Criação de candidaturas
+* [x] Busca de candidatura por ID
+* [x] Atualização de candidaturas
+* [x] Exclusão de candidaturas
+* [x] Consulta geral de candidaturas
+* [x] Estrutura de filtro dinâmico
+* [x] Filtros acumulativos por múltiplos parâmetros
+* [x] Filtro de salário mínimo
+* [x] Filtro de salário máximo
+* [x] Estrutura inicial de Controllers
+* [x] Estrutura de Routes
+* [x] Estrutura de Middleware
+* [x] Estrutura de Service para autenticação
+* [x] Estrutura de geração de JWT
 
-### Backend
+## Em desenvolvimento
+
+* [ ] Cadastro de usuário completo
+* [ ] Login completo
+* [ ] Hash de senha com bcrypt integrado ao fluxo
+* [ ] Emissão de JWT
+* [ ] Validação de JWT pelo middleware
+* [ ] Proteção das rotas
+* [ ] Associação automática das candidaturas ao usuário autenticado
+* [ ] Filtros integrados às rotas
+* [ ] Busca de candidaturas
+* [ ] Integração completa entre frontend e backend
+* [ ] Interface de gerenciamento das candidaturas
+* [ ] Dashboard
+* [ ] Controle de perfil
+
+---
+
+# Execução
+
+Copie:
+
+```text
+Backend/.env.example
+```
+
+para:
+
+```text
+Backend/.env
+```
+
+Configure as informações do PostgreSQL e as variáveis de ambiente necessárias.
+
+Exemplo:
+
+```env
+PORT=3000
+
+DB_USER=seu_usuario
+DB_HOST=localhost
+DB_NAME=JobFlow
+DB_PASSWORD=sua_senha
+DB_PORT=5432
+
+JWT_SECRET=sua_chave_secreta
+```
+
+## Banco de dados
+
+Execute os scripts SQL:
+
+```text
+Database/
+├── TABLE/
+├── VIEW/
+└── INSERTS/
+```
+
+## Backend
 
 ```bash
 cd Backend
@@ -276,9 +688,13 @@ npm install
 node src/app.js
 ```
 
-Por padrão a API escuta em `http://localhost:3000`.
+Por padrão:
 
-### Frontend
+```text
+http://localhost:3000
+```
+
+## Frontend
 
 ```bash
 cd Frontend
@@ -286,28 +702,95 @@ npm install
 npm run dev
 ```
 
-O frontend ainda é o template React + Vite; as telas da aplicação serão construídas em seguida.
-
 ---
 
-## Organização do projeto
+# Organização geral
 
-O projeto é dividido em três partes principais:
+O projeto segue a separação:
 
 ```text
-Frontend
-   │
-   │ HTTP / JSON
-   ▼
-Backend / API
-   │
-   │ SQL
-   ▼
+                         FRONTEND
+                            │
+                            │ HTTP / JSON
+                            ▼
+                         ROUTES
+                            │
+                            ▼
+                       MIDDLEWARE
+                            │
+                            ▼
+                       CONTROLLER
+                       /         \
+                      /           \
+                     ▼             ▼
+               AUTH SERVICE      MODEL
+                     │             │
+                     ▼             ▼
+                   JWT         PostgreSQL
+```
+
+Para candidaturas:
+
+```text
+ApplicationRoutes
+       ↓
+ApplicationController
+       ↓
+ApplicationModels
+       ↓
 PostgreSQL
 ```
 
-Essa separação permite desenvolver a interface, a API e o banco de dados de forma independente, mantendo uma arquitetura mais organizada.
+Para autenticação:
+
+```text
+AuthRoutes
+       ↓
+AuthController
+       ↓
+AuthService
+       ↓
+UserModels
+       ↓
+PostgreSQL
+
+AuthService
+       ↓
+generateToken
+       ↓
+JWT
+```
 
 ---
 
-> Projeto pessoal, em andamento, desenvolvido como estudo prático de Full Stack: APIs REST, autenticação, PostgreSQL e organização em camadas. A ideia e o recorte do produto são do autor.
+# Próximas etapas
+
+A ordem de desenvolvimento prevista é:
+
+```text
+1. Finalizar UserModels
+        ↓
+2. Finalizar AuthService
+        ↓
+3. Finalizar AuthController
+        ↓
+4. Finalizar generateToken
+        ↓
+5. Finalizar authMiddleware
+        ↓
+6. Proteger ApplicationRoutes
+        ↓
+7. Associar candidaturas ao usuário autenticado
+        ↓
+8. Finalizar filtros
+        ↓
+9. Integrar frontend
+        ↓
+10. Criar interface do JobFlow
+        ↓
+11. Dashboard
+```
+
+---
+
+> Projeto pessoal em desenvolvimento, criado como estudo prático de desenvolvimento Full Stack, com foco em APIs REST, PostgreSQL, autenticação, organização em camadas, filtros dinâmicos e integração entre frontend e backend.
