@@ -34,35 +34,6 @@ async function FindById(id) {
   return result.rows[0];
 }
 
-// function for Find User by email
-async function FindByEmail(email) {
-  const result = await pool.query(
-    `SELECT
-        ID_USER,
-        NAME_USER,
-        EMAIL,
-        PASSOWORD_HASH,
-        CREATE_AT,
-        UPDATE_T FROM Users WHERE EMAIL = $1 `,
-    [email],
-  );
-  return result.rows[0];
-}
-
-// function for Find User All
-async function FindByAll() {
-  const result = await pool.query(
-    `SELECT
-        ID_USER,
-        NAME_USER,
-        EMAIL,
-        PASSOWORD_HASH,
-        CREATE_AT,
-        UPDATE_T FROM Users ORDER BY ID_USER `,
-  );
-  return result.rows;
-}
-
 // function for Update User by Id, name email
 async function UptadeUser(id, name, email) {
   const result = await pool.query(
@@ -97,7 +68,5 @@ module.exports = {
   createUser,
   UptadeUser,
   DeleteUser,
-  FindById,
-  FindByAll,
-  FindByEmail,
+  FindById
 };
