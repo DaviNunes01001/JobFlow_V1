@@ -4,15 +4,15 @@ const pool = require("../config/database"); // chama as configurações do datab
 async function createUser(name, email, HashPassoword) {
   const result = await pool.query(
     //chama o resultado a query usando await para esperar a resposta do banco e pool.query para fazer o comando sql
-    `INSERT INTO Users (NAME_USER, PASSOWORD_HASH, CREATE_AT, UPDATE_T)
+    `INSERT INTO Users (NAME_USER, EMAIL, PASSOWORD_HASH, CREATE_AT, UPDATED_T)
             VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
             RETURNING 
                 ID_USER,
                 NAME_USER,
-                EMAIL
+                EMAIL,
                 PASSOWORD_HASH,
                 CREATE_AT,
-                 UPDATE_T`,
+                 UPDATED_T`,
     [name, email, HashPassoword], //chama o que foi ser mudado
   );
 
@@ -28,7 +28,7 @@ async function FindById(id) {
         EMAIL,
         PASSOWORD_HASH,
         CREATE_AT,
-        UPDATE_T FROM Users WHERE ID_USER = $1 `,
+        UPDATED_T FROM Users WHERE ID_USER = $1 `,
     [id],
   );
   return result.rows[0];
@@ -43,7 +43,7 @@ async function FindByEmail(email) {
         EMAIL,
         PASSOWORD_HASH,
         CREATE_AT,
-        UPDATE_T FROM Users WHERE EMAIL = $1 `,
+        UPDATED_T FROM Users WHERE EMAIL = $1 `,
     [email],
   );
   return result.rows[0];
@@ -58,7 +58,7 @@ async function FindByAll() {
         EMAIL,
         PASSOWORD_HASH,
         CREATE_AT,
-        UPDATE_T FROM Users ORDER BY ID_USER `,
+        UPDATED_T FROM Users ORDER BY ID_USER `,
   );
   return result.rows;
 }
@@ -68,16 +68,16 @@ async function UptadeUser(id, name, email) {
   const result = await pool.query(
     `UPDATE Users SET 
         NAME_USER = $1,
-        EMAIL = $2
+        EMAIL = $2,
         UPDATED_T = CURRENT_TIMESTAMP
     WHERE ID_USER = $3
-    RETURING
+    RETURNING
         ID_USER,
         NAME_USER,
         EMAIL,
         CREATE_AT,
-        UPDATE_T`,
-    [id, name, email],
+        UPDATED_T`,
+    [name, email, id],
   );
   return result.rows[0];
 }

@@ -14,7 +14,7 @@ pool.connect((error, client, realese) => {
   if (error) {
     console.log("Erro ao conectar ao PG", error.message);
     console.log(
-      "Verifique as credenciais no aquivo .env, Processos abertos ou configurações remanecentes",
+      "Verifique as credenciais no arquivo .env, Processos abertos ou configurações remanecentes",
     );
   } else {
     console.log("===========================");

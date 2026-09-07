@@ -1,16 +1,22 @@
-require("dotenv").config();
+require("dotenv").config({ path: require("path").resolve(__dirname, "../.env") });
 
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const applicationRoutes = require("./routes/applicattionRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //app.use(express.static(path.join(__dirname, "src", "public")));
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//const clienteRoutes = require("./src/routes/clienteRoutes");
-//app.use("/clientes", clienteRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/applications", applicationRoutes);
 
 app.get("/", (req, res) => {
   res.json({

@@ -266,9 +266,9 @@ async function QueryDinamicaFindFilters(filters) {
     query += ` AND CITY =$${values.length}`;
   }
   
-  if (filters.plataform) {
-    values.push(filters.plataform);
-    query += ` AND PLATAFORM =$${values.length}`;
+  if (filters.platform) {
+    values.push(filters.platform);
+    query += ` AND PLATFORM =$${values.length}`;
   }
 
   if (filters.Minsalary) {
